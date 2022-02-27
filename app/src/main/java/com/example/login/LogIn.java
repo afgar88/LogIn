@@ -17,7 +17,7 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView username= (TextView) findViewById(R.id.UserName);
+        TextView email= (TextView) findViewById(R.id.UserName);
         TextView password= (TextView) findViewById(R.id.password);
         Button loginbtn=(Button)  findViewById(R.id.LoginBtn);
         TextView textsignin=(TextView) findViewById(R.id.SignInText);
@@ -35,7 +35,7 @@ public class LogIn extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().equals("Holi")&&password.getText().toString().equals("Holi")){
+                if (email.getText().toString().equals("Holi")&&password.getText().toString().equals("Holi")){
                     Intent Myintent = new Intent(getBaseContext(),Content.class);
                     startActivity(Myintent);
 
