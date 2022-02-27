@@ -29,11 +29,16 @@ public class SignIn extends AppCompatActivity {
 
         final EditText passwordValidate=(EditText)findViewById(R.id.password);
 
+        final EditText confirmPasword=(EditText)findViewById(R.id.confirmpassword);
+
+        final TextView messageConfirmPassword=(TextView)findViewById(R.id.messageConfirmPassword);
+
         Button btnSignIn = (Button)findViewById(R.id.BtnSignIn);
         btnSignIn.setEnabled(false);
 
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         String passwordPattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!*^&+=])(.{8,})$";
+        String Password="";
 
         emailValidate .addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
@@ -74,7 +79,31 @@ public class SignIn extends AppCompatActivity {
                 }
 
             }
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+        });
+
+        confirmPasword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d("Password",passwordValidate.getText().toString());
+                Log.d("Confirm",s.toString());
+                if (s.toString().equals(passwordValidate.getText().toString()))
+                {
+                    messageConfirmPassword.setText("Mach");
+                    btnSignIn.setEnabled(true);
+                }
+                else
+                {
+                    messageConfirmPassword.setText("Password not mach");
+                    btnSignIn.setEnabled(false);
+                }
+            }
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
