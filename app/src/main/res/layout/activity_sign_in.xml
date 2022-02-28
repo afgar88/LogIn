@@ -81,6 +81,7 @@
         android:id="@+id/confirmpassword"
         android:layout_below="@id/messagePassword"
         android:hint="Confirm password"
+        android:inputType="textPassword"
         android:background="#30ffffff"
         android:textColorHint="@color/gray"
         android:textColor="@color/white"
