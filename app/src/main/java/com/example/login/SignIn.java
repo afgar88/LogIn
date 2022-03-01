@@ -4,10 +4,13 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -40,6 +43,7 @@ public class SignIn extends AppCompatActivity {
          TextView messageConfirmPassword=(TextView)findViewById(R.id.messageConfirmPassword);
          btnSignIn=(Button)findViewById(R.id.BtnSignIn);
 
+        SharedPreferences sharedpref= getSharedPreferences("users", Context.MODE_PRIVATE);
 
         btnSignIn.setEnabled(false);
 
@@ -64,6 +68,7 @@ public class SignIn extends AppCompatActivity {
                     messageEmail.setText("Invalid Email");
                     emailValidate.setError("example@xxx.com");
                     messageEmail.setTextColor(Color.parseColor("#FF1503"));
+                    validatefields();
                 }
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -88,7 +93,7 @@ public class SignIn extends AppCompatActivity {
                 {
                     messagePasword.setText("Invalid Password");
                     passwordValidate.setError("Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter");
-                    btnSignIn.setEnabled(false);
+                    validatefields();
                 }
 
             }
@@ -117,7 +122,7 @@ public class SignIn extends AppCompatActivity {
                 else
                 {
                     messageConfirmPassword.setText("Password not mach");
-                    btnSignIn.setEnabled(false);
+                    validatefields();
                 }
             }
             @Override
@@ -134,18 +139,27 @@ public class SignIn extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Myintent = new Intent(getBaseContext(),Content.class);
+                Intent Myintent = new Intent(getBaseContext(),LogIn.class);
                 startActivity(Myintent);
+
+                SharedPreferences.Editor editor=sharedpref .edit();
+                editor.putString(emailValidate.getText().toString(),passwordValidate.getText().toString());
+                editor.apply();
+                Toast.makeText(SignIn.this, "User Created", Toast.LENGTH_SHORT).show();
+
+
             }
         });
-
 
     }
     public void validatefields (){
         if (email==true && password==true && confirmPas==true){
             btnSignIn.setEnabled(true);
+        }else {
+            btnSignIn.setEnabled((false));
         }
 
     }
+
 
 }

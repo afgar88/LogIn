@@ -2,8 +2,12 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,16 +15,19 @@ import android.widget.Toast;
 
 public class LogIn extends AppCompatActivity {
 
-
+    String shared="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView email= (TextView) findViewById(R.id.UserName);
+        TextView email= (TextView) findViewById(R.id.logemail);
         TextView password= (TextView) findViewById(R.id.password);
         Button loginbtn=(Button)  findViewById(R.id.LoginBtn);
         TextView textsignin=(TextView) findViewById(R.id.SignInText);
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("users", Context.MODE_PRIVATE);
+
+
 
 
         textsignin.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +35,7 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent Myintent = new Intent(getBaseContext(),SignIn.class);
                 startActivity(Myintent);
+
             }
         });
 
@@ -35,15 +43,22 @@ public class LogIn extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (email.getText().toString().equals("Holi")&&password.getText().toString().equals("Holi")){
-                    Intent Myintent = new Intent(getBaseContext(),Content.class);
-                    startActivity(Myintent);
+                shared = sp.getString(email.getText().toString(), "");
 
-                }else{
-                    Toast.makeText(LogIn.this, "LOGIN FAILED", Toast.LENGTH_SHORT).show();
+                //Log.d("Email",email.getText().toString());
+                //Log.d("Prueba",shared);
+                //Log.d("Pasw",password.getText().toString());
+
+                    if(!shared.isEmpty() && shared.equals(password.getText().toString())){
+                        Intent Myintent = new Intent(getBaseContext(),Content.class);
+                        startActivity(Myintent);
+                    }else{
+                        Toast.makeText(LogIn.this, "Email or password are incorrect", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
-            }
+
         });
 
     }
