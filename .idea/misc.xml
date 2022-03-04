@@ -6,8 +6,10 @@
         <entry key="app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.256" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.256" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2535" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.30864197530864196" />
+        <entry key="app/src/main/res/layout-land/activity_sign_in.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_content.xml" value="0.27219202898550726" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.27219202898550726" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.115" />
       </map>

@@ -12,14 +12,17 @@
         <activity
             android:name=".Content"
             android:exported="false"
-            android:parentActivityName=".LogIn" />/>
+            android:parentActivityName=".LogIn"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SignIn"
             android:exported="false"
-            android:parentActivityName=".LogIn" />
+            android:parentActivityName=".LogIn"
+            android:screenOrientation="fullSensor"/>
         <activity
             android:name=".LogIn"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

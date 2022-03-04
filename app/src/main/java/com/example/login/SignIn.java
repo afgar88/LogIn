@@ -92,6 +92,7 @@ public class SignIn extends AppCompatActivity {
                 else
                 {
                     messagePasword.setText("Invalid Password");
+                    messagePasword.setTextColor(Color.parseColor("#FF1503"));
                     passwordValidate.setError("Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter");
                     validatefields();
                 }
@@ -122,6 +123,7 @@ public class SignIn extends AppCompatActivity {
                 else
                 {
                     messageConfirmPassword.setText("Password not mach");
+                    messageConfirmPassword.setTextColor(Color.parseColor("#FF1503"));
                     validatefields();
                 }
             }
