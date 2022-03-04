@@ -21,11 +21,11 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView email= (TextView) findViewById(R.id.logemail);
-        TextView password= (TextView) findViewById(R.id.password);
-        Button loginbtn=(Button)  findViewById(R.id.LoginBtn);
-        TextView textsignin=(TextView) findViewById(R.id.SignInText);
-        SharedPreferences sp = getApplicationContext().getSharedPreferences("users", Context.MODE_PRIVATE);
+        TextView email= findViewById(R.id.logemail);
+        TextView password= findViewById(R.id.password);
+        Button loginbtn=findViewById(R.id.LoginBtn);
+        TextView textsignin=findViewById(R.id.SignInText);
+        SharedPreferences sp = getSharedPreferences("users", Context.MODE_PRIVATE);
 
 
 
