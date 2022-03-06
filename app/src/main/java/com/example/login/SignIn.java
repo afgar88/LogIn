@@ -36,6 +36,7 @@ public class SignIn extends AppCompatActivity {
         getSupportActionBar().setTitle("Sign In");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
+        // define these variables as global so you can use them inside the onResume callback
         EditText emailValidate = findViewById(R.id.email);
         TextView messageEmail = findViewById(R.id.messageEmail);
         TextView messagePasword = findViewById(R.id.messagePassword);
@@ -88,8 +89,10 @@ public class SignIn extends AppCompatActivity {
                     validatefields();
                 } else {
                     messagePasword.setText("Invalid Password");
-                    messagePasword.setTextColor(Color.parseColor("#FF1503"));
-                    passwordValidate.setError("Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter");
+                    // set your colors in the values folder under the colors XML
+                    messagePasword.setTextColor(getColor(R.color.myColor));
+                    // same for the strings inside the strings file XML
+                    passwordValidate.setError(getString(R.string.errorPass));
                     validatefields();
                 }
 
@@ -140,7 +143,7 @@ public class SignIn extends AppCompatActivity {
 
                 emailExist = sharedpref.getString(emailValidate.getText().toString(), "");
                 if (!emailExist.isEmpty()) {
-                    Toast.makeText(SignIn.this, "The email already exist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "The email already exist", Toast.LENGTH_SHORT).show();
                 }else {
 
                     Intent Myintent = new Intent(getBaseContext(), LogIn.class);
@@ -149,7 +152,7 @@ public class SignIn extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedpref.edit();
                     editor.putString(emailValidate.getText().toString(), passwordValidate.getText().toString());
                     editor.apply();
-                    Toast.makeText(SignIn.this, "User Created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "User Created", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -158,11 +161,8 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void validatefields() {
-        if (email == true && password == true && confirmPas == true) {
-            btnSignIn.setEnabled(true);
-        } else {
-            btnSignIn.setEnabled((false));
-        }
+        // Here always try to reduce the code and make it more readable
+        btnSignIn.setEnabled(email && password && confirmPas);
 
     }
 

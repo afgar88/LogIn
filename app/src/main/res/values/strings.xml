@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LogIn</string>
+    <string name="errorPass">"Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter"</string>
 </resources>

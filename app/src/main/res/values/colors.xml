@@ -12,4 +12,6 @@
     <color name="darkblue">#02086D</color>
     <color name="red">#FF1503</color>
     <color name="green">#10BC17</color>
+
+    <color name="myColor">#FF1503</color>
 </resources>
